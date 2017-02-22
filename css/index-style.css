@@ -1,0 +1,19 @@
+
+.cell {
+    display: inline-block;
+    height: 300px;
+    width: 300px;
+    float: left;
+    display: table;
+
+}
+
+.container {
+    max-width: 1200px;
+}
+
+.cell p{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}

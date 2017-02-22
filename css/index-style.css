@@ -12,10 +12,12 @@
     max-width: 1200px;
 }
 
-.cell p{
-    display: table-cell;
+.cell div {
+    display: block;
     vertical-align: middle;
     text-align: center;
+    position: relative;
+    top: 80px;
 }
 
 .circularImg{

@@ -6,12 +6,20 @@ document.addEventListener('DOMContentLoaded', function(){
     for(var i  = 0; i < colors.length; i++){
         const element = document.getElementById(i);
         element.style.background = colors[i];
+        element.style.opacity = 0.75;
         const j = i;
         element.addEventListener('mouseover', function(){
-            element.style.background = colorsHover[j];
+            //element.style.background = colorsHover[j];
+            element.style.opacity = 1.0;
         });
         element.addEventListener('mouseout', function(){
-            element.style.background = colors[j];
+            //element.style.background = colors[j];
+            element.style.opacity = 0.75;
         });
+    }
+
+    var elems = document.getElementsByClassName("technology");
+    for(var i = 0; i < elems.length; i++){
+        var parent = elems[i]
     }
 });

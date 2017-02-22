@@ -17,3 +17,9 @@
     vertical-align: middle;
     text-align: center;
 }
+
+.circularImg{
+    position: absolute;
+    margin: 50px 0 0 50px;
+    border-radius: 50%;
+}

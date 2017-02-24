@@ -18,6 +18,7 @@
     text-align: center;
     position: relative;
     top: 80px;
+    margin: 10px;
 }
 
 img {
@@ -28,4 +29,31 @@ img {
     position: absolute;
     margin: 50px 0 0 50px;
     border-radius: 50%;
+}
+
+body{
+    animation: colorLoop 5s infinite;
+    display:table-cell;
+    padding: 30px;
+    vertical-align: middle;
+}
+
+@keyframes colorLoop {
+    0%{background-color: #66ccff}
+    50%{background-color: #1ab2ff}
+    100%{background-color: #66ccff}
+}
+
+html {
+    display: table;
+    margin: auto;
+}
+
+ul {
+    text-align: left;
+}
+
+p {
+    padding-left: 25px;
+    padding-right: 25px;
 }

@@ -60,4 +60,5 @@ var shopOnline = {
     htmlContentHover: '<div><p>A Website that serves as an online shopping platform and inventory management system.</p><ul>Technology: </ul><li>PHP</li><li>MySQL database</li><li>HTML5</li></div>'
 
 };
+
 var projects = [oneClickUpload, portfoliov1, mathRiceball, parkNEat, shopOnline];

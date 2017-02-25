@@ -17,7 +17,7 @@
     vertical-align: middle;
     text-align: center;
     position: relative;
-    top: 80px;
+    top: 60px;
     margin: 10px;
 }
 
@@ -62,4 +62,9 @@ li {
 p {
     padding-left: 25px;
     padding-right: 25px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
 }

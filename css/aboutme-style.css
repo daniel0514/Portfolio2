@@ -1,0 +1,60 @@
+
+.cell {
+    display: inline-block;
+    height: 900px;
+    width: 600px;
+    float: left;
+    display: table;
+}
+
+.subcell{
+    height:300px;
+    width:600px;
+}
+
+.container {
+    max-width: 1200px;
+}
+
+/*img {*/
+    /*padding: 5px;*/
+/*}*/
+
+/*.circularImg{*/
+    /*position: absolute;*/
+    /*margin: 50px 0 0 50px;*/
+    /*border-radius: 50%;*/
+/*}*/
+
+body{
+    animation: colorLoop 5s infinite;
+    display:table-cell;
+    padding: 30px;
+    vertical-align: middle;
+}
+
+@keyframes colorLoop {
+    0%{background-color: #66ccff}
+    50%{background-color: #1ab2ff}
+    100%{background-color: #66ccff}
+}
+
+html {
+    display: table;
+    margin: auto;
+}
+
+/*ul {*/
+    /*text-align: left;*/
+/*}*/
+
+/*li {*/
+    /*text-align: left;*/
+    /*padding-left: 30px;*/
+    /*padding-right: 30px;*/
+/*}*/
+
+/*p {*/
+    /*padding-left: 25px;*/
+    /*padding-right: 25px;*/
+/*}*/

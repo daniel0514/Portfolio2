@@ -3,9 +3,11 @@ var colors = ['#CAEBF2', '#A9A9A9', '#FF3B3F', '#EFEFEF', '#96858F', '#6D7993', 
 
 
 document.addEventListener('DOMContentLoaded', function(){
+    var colorsLeft = colors.slice();
     for(var i  = 0; i < colors.length; i++){
+        var choice = getRandomInt(0, colorsLeft.length - 1);
         const element = document.getElementById("cell_" + i);
-        element.style.background = colors[i];
+        element.style.background = colorsLeft[choice];
         element.style.opacity = 0.75;
         element.addEventListener('mouseover', function(){
             element.style.opacity = 1.0;
@@ -13,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function(){
         element.addEventListener('mouseout', function(){
             element.style.opacity = 0.75;
         });
+        colorsLeft.splice(choice, 1);
     }
 
     var elems = document.getElementsByClassName("project");
@@ -20,6 +23,12 @@ document.addEventListener('DOMContentLoaded', function(){
         hoverContentSwap(elems[i], projects[i].htmlContentHover, projects[i].htmlContent);
     }
 });
+
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min;
+}
 
 function hoverContentSwap(elem, mouseOverContent, mouseOutContent){
     elem.addEventListener("mouseover", function(){

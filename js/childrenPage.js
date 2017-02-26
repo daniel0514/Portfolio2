@@ -3,9 +3,14 @@ var colors = ['#CAEBF2', '#A9A9A9', '#FF3B3F', '#EFEFEF', '#96858F', '#6D7993', 
 
 
 document.addEventListener('DOMContentLoaded', function(){
-    for(var i  = 0; i < colors.length; i++){
-        const element = document.getElementById("cell_" + i);
-        element.style.background = colors[getRandomInt(0, 11)];
+    var elems = document.getElementsByClassName("subcell");
+    var colorsLeft = colors.slice();
+    for(var i  = 0; i < elems.length; i++){
+        const element = elems[i];
+        var choice = getRandomInt(0, colorsLeft.length - 1);
+        element.style.background = colorsLeft[choice];
+        colorsLeft.splice(choice, 1);
+
         //element.style.opacity = 0.75;
         //element.addEventListener('mouseover', function(){
         //    element.style.opacity = 1.0;

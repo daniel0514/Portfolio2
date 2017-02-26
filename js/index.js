@@ -1,4 +1,4 @@
-var colors = ['#ffffcc', '#ccffff', '#66ffff', '#00ffff', '#ccffcc', '#99ffcc', '#66ffcc', '#00ffcc', '#99ff99', '#66ff99', '#00ff99', '#00cc99'];
+var colors = ['#CAEBF2', '#A9A9A9', '#FF3B3F', '#EFEFEF', '#96858F', '#6D7993', '#9099A2', '#D5D5D5', '#D7CEC7', '#FEDCD2', '#BFD8D2', '#DCB239'];
 
 
 

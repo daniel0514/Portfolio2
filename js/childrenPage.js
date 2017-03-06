@@ -1,11 +1,12 @@
 //Subcell Colors
 var colors = ['#CAEBF2', '#A9A9A9', '#FF3B3F', '#EFEFEF', '#96858F', '#6D7993', '#9099A2', '#D5D5D5', '#D7CEC7', '#FEDCD2', '#BFD8D2', '#DCB239'];
+var curIndex = 0;
 
 //DOMContentLoaded listener is to replace jQuery's ready() function
 document.addEventListener('DOMContentLoaded', function(){
     //When DOM Content is loaded (ready)
     //Assign background color of subcells randomly.
-    var elems = document.getElementsByClassName("subcell");
+    var elems = document.getElementsByClassName("randomColor");
     //Construct a new color array from original colors array so we can remove a color whenever
     //a cell is assigned its color
     var colorsLeft = colors.slice();
@@ -36,6 +37,9 @@ document.addEventListener('DOMContentLoaded', function(){
         legend: legend
     });
     piechart.draw();
+
+    showImg(0);
+
 });
 
 
@@ -54,6 +58,34 @@ function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min)) + min;
+}
+
+/**
+ * Function to switch displayed image in the gallery
+ * @param index :   The Index of the image to show
+ */
+function showImg(index){
+    var imgs = document.getElementsByClassName('imageSlide');
+    if(index >= imgs.length){
+        curIndex = index % imgs.length;
+    } else if (index < 0){
+        curIndex = imgs.length - 1;
+    }
+    for(var i = 0; i < imgs.length; i++){
+        if(i == curIndex){
+            imgs[curIndex].style.display = "block";
+        }else {
+            imgs[i].style.display = "none";
+        }
+    }
+}
+
+/**
+ * Increment or Decrement the current index of the image in the gallery
+ * @param indexChange   :   The change in the index
+ */
+function changeImage(indexChange){
+    showImg(curIndex += indexChange);
 }
 
 /**

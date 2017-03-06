@@ -1,0 +1,50 @@
+
+.cell {
+    display: inline-block;
+    height: 900px;
+    width: 600px;
+    float: left;
+    display: table;
+}
+
+.subcell{
+    height:240px;
+    width:540px;
+    padding: 30px;
+}
+
+.container {
+    max-width: 1200px;
+}
+
+body{
+    animation: colorLoop 5s infinite;
+    display:table-cell;
+    padding: 30px;
+    vertical-align: middle;
+}
+
+@keyframes colorLoop {
+    0%{background-color: #66ccff}
+    50%{background-color: #1ab2ff}
+    100%{background-color: #66ccff}
+}
+
+html {
+    display: table;
+    margin: auto;
+}
+
+.subcell p{
+    display: table;
+    vertical-align: middle;
+    text-align: center;
+    position: relative;
+    font-size: 1.5em;
+}
+
+.technologyPie {
+    display: inline-block;
+    height: 220px;
+    width: 440px;
+}

@@ -42,13 +42,33 @@ document.addEventListener('DOMContentLoaded', function(){
 
 });
 
+var MathRiceball = {
+    pie : {
+        "Unity" : 50,
+        "C#" : 50
+    }
+}
 
 var OneClickUpload = {
     pie : {
         "Java" : 75,
         "SQL" : 25
     },
-    images : ["./img/projects/oneclickupload/OneClickUpload01.png", "./img/projects/oneclickupload/OneClickUpload02.png", "./img/projects/oneclickupload/OneClickUpload03.png", "./img/projects/oneclickupload/OneClickUpload04.png"]
+    images : ["./img/projects/oneclickupload/OneClickUpload01.png",
+        "./img/projects/oneclickupload/OneClickUpload02.png",
+        "./img/projects/oneclickupload/OneClickUpload03.png",
+        "./img/projects/oneclickupload/OneClickUpload04.png"]
+}
+
+var PortfolioV1 = {
+    pie : {
+        "CSS" : 25,
+        "HTML" : 50,
+        "JavaScript" : 25
+    },
+    images : ["./img/projects/portfolio/portfolio1.png",
+        "./img/projects/portfolio/portfolio2.png",
+        "./img/projects/portfolio/portfolio3.png"]
 }
 
 /**
@@ -217,6 +237,10 @@ var PieChart = function(options){
 function getData(id){
     if(id.includes("OneClickUpload")){
         return OneClickUpload;
+    } else if(id.includes("PortfolioV1")){
+        return PortfolioV1;
+    } else if(id.includes("MathRiceball")){
+        return MathRiceball;
     } else {
         return null;
     }

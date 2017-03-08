@@ -78,6 +78,10 @@ html {
     margin: 10px;
 }
 
+.right {
+    right: -120px;
+}
+
 .thumbnails{
     height: 300px;
     width: 600px;

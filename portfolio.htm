@@ -2,53 +2,34 @@
 <html>
 	<head>
         <title>Daniel Hsiao - Web Portfolio</title>
-        <link href = "css/aboutme-style.css" rel = "stylesheet">
-        <link href = "css/shape.css" rel = "stylesheet">
+        <link href = "css/projects.css" rel = "stylesheet">
 	</head>
 	<body>
         <div class="container">
             <div class="cell" id="cell_0">
-                <div class="subcell"><p>I'm a fourth year Computer Science student at UBC. My programming experience is mainly with Java,
-                    but I'm currently learning different languages to expand my knowledge about software and web development.
-                    I'm highly interested in mobile app and website development.</p></div>
-                <div class="subcell"></div>
-                <div class="subcell"><p>My current languages involve Java, SQL,JavaScript, HTML and CSS.
-                    My current focus is to develop enough knowledge for JavaScript Frameworks (NodeJS and React.js)
-                    and HTML5 for better website development</p></div>
+                <div class="subcell randomColor"><p>Portfolio V1 is a website that serves as an online portfolio to host my personal information, my skill set, and my projects. The website is my very first attempt in Web Development,
+                and throughout the development, I was able to gain entry level of knowledge in HTML, CSS, and JavaScript</p></div>
+                <div class="subcell randomColor"><p>The website relies heavily on Twitter's Bootstrap to achieve Responsive Web Design. The Website uses JavaScript and jQuery to handle the scrolling and time change at the footer.
+                    </p></div>
+                <div class="subcell randomColor">
+                    <canvas class="technologyPie" id="PortfolioV1Pie">
+                        Sorry, your browser does not support the canvas tag.
+                    </canvas>
+                    <div id="technologyPieLegend" style="display: inline-block;"></div>
+                </div>
             </div>
-            <div class="cell" id="cell_1">
-                <div class="subcell">
-                    <p>Languages:</p>
-                    <div class="wrapper">
-                        <div class="arc arc-34"></div>
-                        <div class="text">Java</div>
-                    </div>
-                    <div class="wrapper">
-                        <div class="arc arc-34"></div>
-                        <div class="text">HTML & CSS</div>
-                    </div>
-                    <div class="wrapper">
-                        <div class="arc arc-12"></div>
-                        <div class="text">JavaScript</div>
+            <div class="cell randomColor" id="cell_1">
+                <div class="gallery">
+                    <div class="imageGallery">
+                        <img class="imageSlide" id="imagePortfolioV1">
                     </div>
                 </div>
-                <div class="subcell">
-                    <p>Tools:</p>
-                    <div class="wrapper">
-                        <div class="arc arc-12"></div>
-                        <div class="text">Android Studio</div>
-                    </div>
-                    <div class="wrapper">
-                        <div class="arc arc-12"></div>
-                        <div class="text">Git</div>
-                    </div>
-                </div>
-                <div class="subcell">
-                    <p>Database:</p>
-                    <div class="wrapper">
-                        <div class="arc arc-34"></div>
-                        <div class="text">SQL</div>
-                    </div>
+                <div class="thumbnails">
+                    <button class="galleryButton left" onclick="changeImage(-1)">&#10094;</button>
+                    <img class="thumbnail" onclick="showImg(curIndex = 0)" src="./img/projects/portfolio/portfolio1.png">
+                    <img class="thumbnail" onclick="showImg(curIndex = 1)" src="./img/projects/portfolio/portfolio2.png">
+                    <img class="thumbnail" onclick="showImg(curIndex = 2)" src="./img/projects/portfolio/portfolio3.png">
+                    <button class="galleryButton right" onclick="changeImage(+1)">&#10095;</button>
                 </div>
             </div>
         </div>

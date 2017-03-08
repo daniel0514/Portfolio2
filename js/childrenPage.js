@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function(){
         //The canvas DOM object
         canvas: canvas[0],
         //The Pie Split Data
-        data: getData(canvas[0].id),
+        data: getData(canvas[0].id).pie,
         //The colors to be used in the pie chart
         colors:["#fde23e","#f16e23", "#57d9ff","#937e88"],
         //The DIV DOM object to put legends in
@@ -44,8 +44,11 @@ document.addEventListener('DOMContentLoaded', function(){
 
 
 var OneClickUpload = {
-    "Java" : 75,
-    "SQL" : 25
+    pie : {
+        "Java" : 75,
+        "SQL" : 25
+    },
+    images : ["./img/projects/oneclickupload/OneClickUpload01.png", "./img/projects/oneclickupload/OneClickUpload02.png", "./img/projects/oneclickupload/OneClickUpload03.png", "./img/projects/oneclickupload/OneClickUpload04.png"]
 }
 
 /**
@@ -65,17 +68,23 @@ function getRandomInt(min, max) {
  * @param index :   The Index of the image to show
  */
 function showImg(index){
-    var imgs = document.getElementsByClassName('imageSlide');
-    if(index >= imgs.length){
-        curIndex = index % imgs.length;
+    var imgSlide = document.getElementsByClassName('imageSlide')[0];
+    var thumbnails = document.getElementsByClassName('thumbnail');
+    var images = getData(imgSlide.id).images;
+    if(index >= images.length){
+        curIndex = index % images.length;
     } else if (index < 0){
-        curIndex = imgs.length - 1;
+        curIndex = images.length - 1;
     }
-    for(var i = 0; i < imgs.length; i++){
+    imgSlide.style.opacity = 1;
+    fadeOut(imgSlide, 500);
+    imgSlide.src = images[curIndex];
+    fadeIn(imgSlide, 500);
+    for(var i = 0; i < images.length; i++){
         if(i == curIndex){
-            imgs[curIndex].style.display = "block";
+            thumbnails[curIndex].style.opacity = 1.0;
         }else {
-            imgs[i].style.display = "none";
+            thumbnails[i].style.opacity = 0.5;
         }
     }
 }
@@ -86,6 +95,31 @@ function showImg(index){
  */
 function changeImage(indexChange){
     showImg(curIndex += indexChange);
+}
+
+/**
+ * Function to simulate jQuery's fadeOut function
+ * @param element   :   The element to fadeout
+ * @param time      :   The total time for the element to fadeout in 10 steps
+ */
+function fadeOut(element, time){
+    if((element.style.opacity = parseFloat(element.style.opacity) - 0.1) > 0){
+        setTimeout(fadeOut(element, time), time/10);
+    } else {
+        element.style.display = "none";
+    }
+}
+
+/**
+ * FUnction to simulate jQuery's fadeIn function
+ * @param element   :   The element to fadeIn
+ * @param time      :   The total time for the element to fadeIn in 10 steps
+ */
+function fadeIn(element, time){
+    element.style.display = "block";
+    if((element.style.opacity = parseFloat(element.style.opacity) + .1) < 1){
+        setTimeout(function(){fadeIn(element, time);}, time/10);
+    }
 }
 
 /**
@@ -176,12 +210,12 @@ var PieChart = function(options){
 }
 
 /**
- * Simple function to get the corresponding pie chart data with ID
+ * Simple function to get the corresponding project data with ID
  * @param id    : The ID of the Canvas DOM object
- * @returns {*} : The data for the pie chart
+ * @returns {*} : The Project Data
  */
 function getData(id){
-    if(id == "OneClickUploadPie"){
+    if(id.includes("OneClickUpload")){
         return OneClickUpload;
     } else {
         return null;

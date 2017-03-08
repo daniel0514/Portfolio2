@@ -20,14 +20,19 @@
                 </div>
             </div>
             <div class="cell randomColor" id="cell_1">
-                <button class="galleryButton left" onclick="changeImage(-1)">&#10094;</button>
-                <div class="imageGallery">
-                    <img class="imageSlide" src="./img/projects/oneclickupload/OneClickUpload01.png">
-                    <img class="imageSlide" src="./img/projects/oneclickupload/OneClickUpload02.png">
-                    <img class="imageSlide" src="./img/projects/oneclickupload/OneClickUpload03.png">
-                    <img class="imageSlide" src="./img/projects/oneclickupload/OneClickUpload04.png">
+                <div class="gallery">
+                    <div class="imageGallery">
+                        <img class="imageSlide" id="imageOneClickUpload">
+                    </div>
                 </div>
-                <button class="galleryButton right" onclick="changeImage(+1)">&#10095;</button>
+                <div class="thumbnails">
+                    <button class="galleryButton left" onclick="changeImage(-1)">&#10094;</button>
+                    <img class="thumbnail" onclick="showImg(curIndex = 0)" src="./img/projects/oneclickupload/OneClickUpload01.png">
+                    <img class="thumbnail" onclick="showImg(curIndex = 1)" src="./img/projects/oneclickupload/OneClickUpload02.png">
+                    <img class="thumbnail" onclick="showImg(curIndex = 2)" src="./img/projects/oneclickupload/OneClickUpload03.png">
+                    <img class="thumbnail" onclick="showImg(curIndex = 3)" src="./img/projects/oneclickupload/OneClickUpload04.png">
+                    <button class="galleryButton right" onclick="changeImage(+1)">&#10095;</button>
+                </div>
             </div>
         </div>
         <script type="text/javascript" src="js/childrenPage.js"></script>

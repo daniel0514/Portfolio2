@@ -55,27 +55,37 @@ html {
     padding: 10%;
     margin: 0 auto;
     display:table;
+    opacity: 1;
 }
 
 .imageGallery{
-    height: 540px;
-    width: 540px;
-    display: inline-block;
+    height: 600px;
+    width: 600px;
+    float:left;
+}
+
+.gallery{
+    height:600px;
+    width:600px;
 }
 
 .galleryButton{
     height: 30px;
     width: 30px;
-    display: inline-block;
+    float:left;
+    position: relative;
+    top: 150px;
+    margin: 10px;
 }
 
-.left {
-    position: relative;
-    top: -300px;
-    left: 60px;
+.thumbnails{
+    height: 300px;
+    width: 600px;
 }
-.right {
-    position: relative;
-    top: -300px;
-    right: 60px;
+
+.thumbnail{
+    max-height: 200px;
+    max-width: 115px;
+    padding: 50px 5px 5px 5px;
+    float:left;
 }

@@ -2,53 +2,31 @@
 <html>
 	<head>
         <title>Daniel Hsiao - Web Portfolio</title>
-        <link href = "css/aboutme-style.css" rel = "stylesheet">
-        <link href = "css/shape.css" rel = "stylesheet">
+        <link href = "css/projects.css" rel = "stylesheet">
 	</head>
 	<body>
         <div class="container">
             <div class="cell" id="cell_0">
-                <div class="subcell"><p>I'm a fourth year Computer Science student at UBC. My programming experience is mainly with Java,
-                    but I'm currently learning different languages to expand my knowledge about software and web development.
-                    I'm highly interested in mobile app and website development.</p></div>
-                <div class="subcell"></div>
-                <div class="subcell"><p>My current languages involve Java, SQL,JavaScript, HTML and CSS.
-                    My current focus is to develop enough knowledge for JavaScript Frameworks (NodeJS and React.js)
-                    and HTML5 for better website development</p></div>
+                <div class="subcell randomColor"><p>Shop Online! is a website made for online shopping experience (for custoemrs) and inventory management (for managers and clerks).
+                    Customers can added items (if available) to their baskets and checkout items at once. Managers or clerks can create reports of top selling items, daily sells,
+                    and inventory counts. The website also has a login system to determine user information once accounts are created.</p></div>
+                <div class="subcell randomColor"></div>
+                <div class="subcell randomColor">
+                    <canvas class="technologyPie" id="ShopOnlinePie">
+                        Sorry, your browser does not support the canvas tag.
+                    </canvas>
+                    <div id="technologyPieLegend" style="display: inline-block;"></div>
+                </div>
             </div>
             <div class="cell" id="cell_1">
-                <div class="subcell">
-                    <p>Languages:</p>
-                    <div class="wrapper">
-                        <div class="arc arc-34"></div>
-                        <div class="text">Java</div>
-                    </div>
-                    <div class="wrapper">
-                        <div class="arc arc-34"></div>
-                        <div class="text">HTML & CSS</div>
-                    </div>
-                    <div class="wrapper">
-                        <div class="arc arc-12"></div>
-                        <div class="text">JavaScript</div>
-                    </div>
+                <div class="subcell randomColor">
                 </div>
-                <div class="subcell">
-                    <p>Tools:</p>
-                    <div class="wrapper">
-                        <div class="arc arc-12"></div>
-                        <div class="text">Android Studio</div>
-                    </div>
-                    <div class="wrapper">
-                        <div class="arc arc-12"></div>
-                        <div class="text">Git</div>
-                    </div>
+                <div class="subcell randomColor">
+                    <p>Shop Online is written in PHP and HTML, and the website uses MySQL database for data storage. The results of SQL queries are then displayed in a readable format without any modification
+                        to the results. For security, the website uses POST method in form handling to hide information from users. Passwords are encrypted with Blowfish Encryption and then stored in the database.</p>
                 </div>
-                <div class="subcell">
-                    <p>Database:</p>
-                    <div class="wrapper">
-                        <div class="arc arc-34"></div>
-                        <div class="text">SQL</div>
-                    </div>
+                <div class="subcell randomColor">
+
                 </div>
             </div>
         </div>

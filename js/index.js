@@ -59,7 +59,7 @@ var mathRiceball = {
 
 var parkNEat = {
     title: "ParkNEat",
-    htmlContent: '<div><p>Project ParkNEat</p><img src="./img/skills/Java_Icon.png"/><img src="./img/skills/SQL_Icon.png"/></div>',
+    htmlContent: '<div><p>Project ParkNEat</p><img src="./img/skills/Java_Icon.png"/></div>',
     htmlContentHover: '<div><p>A Web Application to display restaurants along with their ratings/comments on Google Map and nearby parking spots.</p><ul>Technology: <li>Java</li><li>NoSQL database</li><li>Google Web Toolkit</li></ul></div>'
 };
 

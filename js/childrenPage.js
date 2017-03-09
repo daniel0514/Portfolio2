@@ -71,6 +71,20 @@ var PortfolioV1 = {
         "./img/projects/portfolio/portfolio3.png"]
 }
 
+var ParkNEat = {
+    pie : {
+        "Java" : 100
+    }
+}
+
+var ShopOnline = {
+    pie : {
+        "HTML" : 40,
+        "PHP" : 30,
+        "SQL": 30
+    }
+}
+
 /**
  * Simple function to get random integers between the minimum and the maximum values
  * @param min : the minimum value
@@ -241,6 +255,10 @@ function getData(id){
         return PortfolioV1;
     } else if(id.includes("MathRiceball")){
         return MathRiceball;
+    } else if(id.includes("ParkNEat")){
+        return ParkNEat;
+    } else if(id.includes("ShopOnline")){
+        return ShopOnline;
     } else {
         return null;
     }

@@ -2,11 +2,9 @@
 var colors = ['#CAEBF2', '#A9A9A9', '#FF3B3F', '#EFEFEF', '#96858F', '#6D7993', '#9099A2', '#D5D5D5', '#D7CEC7', '#FEDCD2', '#BFD8D2', '#DCB239'];
 var curIndex = 0;
 
-//DOMContentLoaded listener is to replace jQuery's ready() function
-document.addEventListener('DOMContentLoaded', function(){
-    //When DOM Content is loaded (ready)
+$(document).ready(function(){
     //Assign background color of subcells randomly.
-    var elems = document.getElementsByClassName("randomColor");
+    var elems = $(".randomColor");
     //Construct a new color array from original colors array so we can remove a color whenever
     //a cell is assigned its color
     var colorsLeft = colors.slice();
@@ -22,9 +20,9 @@ document.addEventListener('DOMContentLoaded', function(){
 
     //Draw Pie Charts
     //Get the canvas DOM element
-    var canvas = document.getElementsByClassName("technologyPie");
+    var canvas = $(".technologyPie");
     //Get the DIV element to put legend in
-    var legend = document.getElementById("technologyPieLegend");
+    var legend = $("#technologyPieLegend");
     //Construct the PieChart object
     var piechart = new PieChart({
         //The canvas DOM object

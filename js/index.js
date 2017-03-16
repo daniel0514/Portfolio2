@@ -4,15 +4,19 @@ var colors = ['#CAEBF2', '#A9A9A9', '#FF3B3F', '#EFEFEF', '#96858F', '#6D7993', 
 /**
  * The listener for DOMContentLoaded, similar to jQuery's ready() function
  */
-document.addEventListener('DOMContentLoaded', function(){
+$(document).ready(function(){
     //Get the projects info from Node.js server
-    httpGetAsync('http://localhost:8000/projects', function(data){
-        //Once retrieved data, start adding Projects divs into the website
-        var object = JSON.parse(data);
-        insertProjectDivs(object);
-    });
+    $.ajax({
+        url: 'http://localhost:8000/projects', success: function(result){
+            //Once retrieved data, start adding Projects divs into the website
+            console.log(result);
+            var object = result;
+            insertProjectDivs(object);
+        }
+    })
+
     //For other elements, set the style and hover effects
-    var elements = document.getElementsByClassName("cell");
+    var elements = $(".cell");
     for(var i  = 0; i < elements.length; i++){
         const element = elements[i];
         addHoverEffect(element, null);
@@ -28,12 +32,11 @@ document.addEventListener('DOMContentLoaded', function(){
 function insertProjectDivs(data){
     //Only add divs when there's data
     if(data.length > 0){
-        var afterProjectNode = document.getElementById('afterProjects');
         for(i = 0; i < data.length; i++){
             //Create the project div
             var a = createProjectCell(data[i]);
             //Project divs should be inserted before the last Links Div
-            afterProjectNode.parentNode.insertBefore(a, afterProjectNode);
+            a.insertAfter($('#beforeProjects'));
         }
     }
 }
@@ -45,22 +48,22 @@ function insertProjectDivs(data){
  */
 function createProjectCell(data){
     //Creating the link element to contain the Project Div
-    var newProject = document.createElement('a');
-    newProject.href = data.page;
+    var newProject = $("<a></a>");
+    newProject.attr('href', data.page);
     //Create the project Div
-    var newProjectDiv = document.createElement('div');
+    var newProjectDiv = $("<div></div>");
 
     //Setting the style of the Div
     setStyle(newProjectDiv);
 
     //Adding Hover Effect of the Div
     addHoverEffect(newProjectDiv, data);
-    newProjectDiv.className = "cell project";
+    newProjectDiv.addClass("cell project");
     //Adding the Div element to the link
-    newProject.appendChild(newProjectDiv);
+    $(newProject).append(newProjectDiv);
     //Create the content of the Div element through the function createProjectInnerDiv
     //and add it to the Div
-    newProjectDiv.appendChild(createProjectInnerDiv(data));
+    $(newProjectDiv).append(createProjectInnerDiv(data));
     return newProject;
 }
 
@@ -71,8 +74,8 @@ function createProjectCell(data){
 function setStyle(elem){
     //Randomly choose a color from the color pool
     var choice = getRandomInt(0, colors.length - 1);
-    elem.style.background = colors[choice];
-    elem.style.opacity = 0.75;
+    $(elem).css("background-color", colors[choice]);
+    $(elem).css("opacity", 0.75);
     //Remove the color from the color pool so no two colors are the same
     colors.splice(choice, 1);
 }
@@ -85,19 +88,19 @@ function setStyle(elem){
  */
 function createProjectInnerDiv(data){
     // The main Div to contain the paragraph and images
-    var newProjectInfoDiv = document.createElement('div');
+    var newProjectInfoDiv = $("<div></div>");
     // The main paragraph for the title of the project
-    var paragraph = document.createElement('p');
-    paragraph.innerHTML = data.name
+    var paragraph = $('<p></p>');
+    $(paragraph).html(data.name);
     //Adding the paragraph to the Div Element
-    newProjectInfoDiv.appendChild(paragraph);
+    $(newProjectInfoDiv).append(paragraph);
     //Now adding icons of the project
     var icons = data.technology.icons
     for(j = 0; j < icons.length; j++){
         //For each icon, create an img element and add it to the Div element
-        var technologyImg = document.createElement('img');
-        technologyImg.src = getTechnologyPath(icons[j]);
-        newProjectInfoDiv.appendChild(technologyImg);
+        var technologyImg = $("<img/>");
+        $(technologyImg).attr("src", getTechnologyPath(icons[j]))
+        newProjectInfoDiv.append(technologyImg);
     }
     return newProjectInfoDiv;
 }
@@ -108,22 +111,22 @@ function createProjectInnerDiv(data){
  * @returns {HTMLElement}   : The element created
  */
 function createProjectHoverInnerDiv(data){
-    var newProjectInfoDiv = document.createElement('div');
+    var newProjectInfoDiv = $("<div></div>");
     //The paragraph will now contain the brief description of the project
-    var paragraph = document.createElement('p');
-    paragraph.innerHTML = data.descriptions.brief;
-    newProjectInfoDiv.appendChild(paragraph);
+    var paragraph = $("<p></p>");;
+    paragraph.html(data.descriptions.brief);
+    newProjectInfoDiv.append(paragraph);
     //The unordered list will contain Strings of technology used
-    var ul = document.createElement('ul');
-    ul.innerHTML = "Technlogy: ";
+    var ul = $('<ul></ul>');;
+    ul.html("Technlogy: ");
     var hovers = data.technology.hover
     for(j = 0; j < hovers.length; j++){
         //For each technology, add it to the list
-        const list = document.createElement('li');
-        list.innerHTML = hovers[j];
-        ul.appendChild(list);
+        const list = $('<li></li>');;
+        list.html(hovers[j]);
+        ul.append(list);
     }
-    newProjectInfoDiv.appendChild(ul);
+    newProjectInfoDiv.append(ul);
     return newProjectInfoDiv;
 }
 
@@ -135,26 +138,22 @@ function createProjectHoverInnerDiv(data){
 function addHoverEffect(div, data){
     if(data != null){
         //Only project cells will come with data
-        div.addEventListener('mouseover', function(){
-            div.style.opacity = 1.0;
-            div.innerHTML = "";
+        $(div).hover(function(){
+            $(this).css("opacity", 1);
             //when mouseover, change the div content to HoverInnerDiv
-            div.appendChild(createProjectHoverInnerDiv(data));
-        });
-        div.addEventListener('mouseout', function(){
-            div.style.opacity = 0.75;
-            div.innerHTML = "";
+            $(this).html(createProjectHoverInnerDiv(data));
+        }, function(){
+            $(this).css("opacity", 0.75);
             //when mouseout, change the div content back to the original InnerDiv
-            div.appendChild(createProjectInnerDiv(data));
+            $(this).html(createProjectInnerDiv(data));
         });
     } else {
         //Else if data is null, the divs will be simple cells
         //and we only need to apply mouseover opacity effect
-        div.addEventListener('mouseover', function(){
-            div.style.opacity = 1.0;
-        });
-        div.addEventListener('mouseout', function(){
-            div.style.opacity = 0.75;
+        $(div).hover(function(){
+            $(this).css("opacity", 1);
+        }, function(){
+            $(this).css("opacity", 0.75);
         });
     }
 }
@@ -187,20 +186,6 @@ function getTechnologyPath(tech){
         console.log(tech);
         return null;
     }
-}
-
-/**
- * The HHTP Async GET function to get the data from Node.js
- * @param url       : The url of the server
- * @param callback  : The callback function
- */
-function httpGetAsync(url, callback){
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.onreadystatechange = function(){
-        if(xmlHttp.readyState == 4 && xmlHttp.status == 200) callback(xmlHttp.responseText);
-    }
-    xmlHttp.open("GET", url);
-    xmlHttp.send();
 }
 
 /**

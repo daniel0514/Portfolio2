@@ -1,99 +1,46 @@
 //Subcell Colors
-var colors = ['#CAEBF2', '#A9A9A9', '#FF3B3F', '#EFEFEF', '#96858F', '#6D7993', '#9099A2', '#D5D5D5', '#D7CEC7', '#FEDCD2', '#BFD8D2', '#DCB239'];
 var curIndex = 0;
+var projects = [];
 
 $(document).ready(function(){
+    $.ajax({
+        url: 'http://localhost:8000/projects', success: function(result){
+            //Once retrieved data, start adding Projects divs into the website
+            projects = result;
+
+            //Draw Pie Charts
+            //Get the canvas DOM element
+            var canvas = $(".technologyPie");
+            //Get the DIV element to put legend in
+            var legend = $("#technologyPieLegend");
+            //Construct the PieChart object
+            var piechart = new PieChart({
+                //The canvas DOM object
+                canvas: canvas[0],
+                //The Pie Split Data
+                data: getData(canvas[0].id).technology.proportion,
+                //The colors to be used in the pie chart
+                colors:["#fde23e","#f16e23", "#57d9ff","#937e88"],
+                //The DIV DOM object to put legends in
+                legend: legend
+            });
+            piechart.draw();
+
+            showImg(0);
+        }
+    })
+
     //Assign background color of subcells randomly.
     var elems = $(".randomColor");
     //Construct a new color array from original colors array so we can remove a color whenever
     //a cell is assigned its color
-    var colorsLeft = colors.slice();
     for(var i  = 0; i < elems.length; i++){
         const element = elems[i];
-        //Get random index
-        var choice = getRandomInt(0, colorsLeft.length - 1);
-        //Assign the subcell the randomly chosen color
-        element.style.background = colorsLeft[choice];
-        //Remove the color from the array so no subcells will have duplicated colors
-        colorsLeft.splice(choice, 1);
+        setStyle(element, 1);
     }
 
-    //Draw Pie Charts
-    //Get the canvas DOM element
-    var canvas = $(".technologyPie");
-    //Get the DIV element to put legend in
-    var legend = $("#technologyPieLegend");
-    //Construct the PieChart object
-    var piechart = new PieChart({
-        //The canvas DOM object
-        canvas: canvas[0],
-        //The Pie Split Data
-        data: getData(canvas[0].id).pie,
-        //The colors to be used in the pie chart
-        colors:["#fde23e","#f16e23", "#57d9ff","#937e88"],
-        //The DIV DOM object to put legends in
-        legend: legend
-    });
-    piechart.draw();
-
-    showImg(0);
 
 });
-
-var MathRiceball = {
-    pie : {
-        "Unity" : 50,
-        "C#" : 50
-    }
-}
-
-var OneClickUpload = {
-    pie : {
-        "Java" : 75,
-        "SQL" : 25
-    },
-    images : ["./img/projects/oneclickupload/OneClickUpload01.png",
-        "./img/projects/oneclickupload/OneClickUpload02.png",
-        "./img/projects/oneclickupload/OneClickUpload03.png",
-        "./img/projects/oneclickupload/OneClickUpload04.png"]
-}
-
-var PortfolioV1 = {
-    pie : {
-        "CSS" : 25,
-        "HTML" : 50,
-        "JavaScript" : 25
-    },
-    images : ["./img/projects/portfolio/portfolio1.png",
-        "./img/projects/portfolio/portfolio2.png",
-        "./img/projects/portfolio/portfolio3.png"]
-}
-
-var ParkNEat = {
-    pie : {
-        "Java" : 100
-    }
-}
-
-var ShopOnline = {
-    pie : {
-        "HTML" : 40,
-        "PHP" : 30,
-        "SQL": 30
-    }
-}
-
-/**
- * Simple function to get random integers between the minimum and the maximum values
- * @param min : the minimum value
- * @param max : the maximum value
- * @returns {number} : a random integer between min and max
- */
-function getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min)) + min;
-}
 
 /**
  * Function to switch displayed image in the gallery
@@ -109,9 +56,9 @@ function showImg(index){
         curIndex = images.length - 1;
     }
     imgSlide.style.opacity = 1;
-    fadeOut(imgSlide, 500);
-    imgSlide.src = images[curIndex];
-    fadeIn(imgSlide, 500);
+    $(imgSlide).fadeOut(500);
+    imgSlide.src = 'img/projects/' + images[curIndex];
+    $(imgSlide).fadeIn(500);
     for(var i = 0; i < images.length; i++){
         if(i == curIndex){
             thumbnails[curIndex].style.opacity = 1.0;
@@ -127,31 +74,6 @@ function showImg(index){
  */
 function changeImage(indexChange){
     showImg(curIndex += indexChange);
-}
-
-/**
- * Function to simulate jQuery's fadeOut function
- * @param element   :   The element to fadeout
- * @param time      :   The total time for the element to fadeout in 10 steps
- */
-function fadeOut(element, time){
-    if((element.style.opacity = parseFloat(element.style.opacity) - 0.1) > 0){
-        setTimeout(fadeOut(element, time), time/10);
-    } else {
-        element.style.display = "none";
-    }
-}
-
-/**
- * FUnction to simulate jQuery's fadeIn function
- * @param element   :   The element to fadeIn
- * @param time      :   The total time for the element to fadeIn in 10 steps
- */
-function fadeIn(element, time){
-    element.style.display = "block";
-    if((element.style.opacity = parseFloat(element.style.opacity) + .1) < 1){
-        setTimeout(function(){fadeIn(element, time);}, time/10);
-    }
 }
 
 /**
@@ -247,17 +169,10 @@ var PieChart = function(options){
  * @returns {*} : The Project Data
  */
 function getData(id){
-    if(id.includes("OneClickUpload")){
-        return OneClickUpload;
-    } else if(id.includes("PortfolioV1")){
-        return PortfolioV1;
-    } else if(id.includes("MathRiceball")){
-        return MathRiceball;
-    } else if(id.includes("ParkNEat")){
-        return ParkNEat;
-    } else if(id.includes("ShopOnline")){
-        return ShopOnline;
-    } else {
-        return null;
+    for(i = 0; i < projects.length; i++){
+        if(id.includes(projects[i].name.replace(/[^a-z0-9+]+/gi, ''))){
+            return projects[i];
+        }
     }
+    return null;
 }

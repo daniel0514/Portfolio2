@@ -72,14 +72,15 @@ html {
 .galleryButton{
     height: 30px;
     width: 30px;
-    float:left;
+    float: left;
     position: relative;
     top: 150px;
     margin: 10px;
 }
 
 .right {
-    right: -120px;
+    /*right: -120px;*/
+    float:right;
 }
 
 .thumbnails{

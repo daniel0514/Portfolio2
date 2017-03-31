@@ -1,5 +1,4 @@
 var colors = ['#CAEBF2', '#A9A9A9', '#FF3B3F', '#EFEFEF', '#96858F', '#6D7993', '#9099A2', '#D5D5D5', '#D7CEC7', '#FEDCD2', '#BFD8D2', '#DCB239'];
-var projects;
 /**
  * Simple function to get the image path of the technology
  */

@@ -6,33 +6,26 @@
 	</head>
 	<body>
         <div class="container">
-            <div class="cell" id="cell_0">
-                <div class="subcell randomColor"><p>OneClickUpload is an Android app, written in Android Studio, to upload photos to multiple social media accounts at the same time.
-                    Currently, the app only implements two social media APIs (Facebook and Twitter).</p></div>
-                <div class="subcell randomColor"><p>
-                    Android's built-in database, SQLite, is utilized in the app to persist user data such as Upload Profiles, preventing the loss of user created profiles between app closes.
-                    When the app is opened, the profile information is then retrieved from the database and being unmarshalled into objects for use.</p></div>
-                <div class="subcell randomColor">
-                    <canvas class="technologyPie" id="OneClickUploadPie">
-                        Sorry, your browser does not support the canvas tag.
-                    </canvas>
-                    <div id="technologyPieLegend" style="display: inline-block;"></div>
+            <div class="subcell randomColor"><p class="paragraph1"></p></div>
+            <div class="subcell randomColor"><p class="paragraph2"></p></div>
+            <div class="subcell randomColor">
+                <canvas class="technologyPie" id="OneClickUploadPie">
+                    Sorry, your browser does not support the canvas tag.
+                </canvas>
+                <div id="technologyPieLegend" style="display: inline-block;"></div>
+            </div>
+            <div class="gallery randomColor">
+                <div class="imageGallery">
+                    <img class="imageSlide" id="imageOneClickUpload">
                 </div>
             </div>
-            <div class="cell randomColor" id="cell_1">
-                <div class="gallery">
-                    <div class="imageGallery">
-                        <img class="imageSlide" id="imageOneClickUpload">
-                    </div>
-                </div>
-                <div class="thumbnails">
-                    <button class="galleryButton left" onclick="changeImage(-1)">&#10094;</button>
-                    <img class="thumbnail" onclick="showImg(curIndex = 0)" src="./img/projects/oneclickupload/OneClickUpload01.png">
-                    <img class="thumbnail" onclick="showImg(curIndex = 1)" src="./img/projects/oneclickupload/OneClickUpload02.png">
-                    <img class="thumbnail" onclick="showImg(curIndex = 2)" src="./img/projects/oneclickupload/OneClickUpload03.png">
-                    <img class="thumbnail" onclick="showImg(curIndex = 3)" src="./img/projects/oneclickupload/OneClickUpload04.png">
-                    <button class="galleryButton right" onclick="changeImage(+1)">&#10095;</button>
-                </div>
+            <div class="thumbnails randomColor">
+                <button class="galleryButton left" onclick="changeImage(-1)">&#10094;</button>
+                <img class="thumbnail" onclick="showImg(curIndex = 0)" src="./img/projects/oneclickupload/OneClickUpload01.png">
+                <img class="thumbnail" onclick="showImg(curIndex = 1)" src="./img/projects/oneclickupload/OneClickUpload02.png">
+                <img class="thumbnail" onclick="showImg(curIndex = 2)" src="./img/projects/oneclickupload/OneClickUpload03.png">
+                <img class="thumbnail" onclick="showImg(curIndex = 3)" src="./img/projects/oneclickupload/OneClickUpload04.png">
+                <button class="galleryButton right" onclick="changeImage(+1)">&#10095;</button>
             </div>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>

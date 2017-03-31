@@ -1,20 +1,15 @@
 
 .cell {
-    display: inline-block;
-    height: 900px;
-    width: 600px;
-    float: left;
-    display: table;
-}
-
-.subcell{
     height:240px;
     width:540px;
-    padding: 30px;
 }
 
 .container {
     max-width: 1200px;
+    max-height: 720px;
+    display:flex;
+    flex-flow:column wrap;
+    align-content:center;
 }
 
 body{
@@ -34,10 +29,23 @@ html {
     display: table;
     margin: auto;
 }
-.subcell p{
+
+.cell p{
     display: table;
     vertical-align: middle;
     text-align: center;
     position: relative;
     font-size: 1.5em;
+    padding: 0px 30px 0px 30px;
+
+}
+
+@media screen and (max-width : 540px) {
+
+    .container {
+        max-width: 1200px;
+        display:flex;
+        flex-flow:column wrap;
+        align-content:center;
+    }
 }

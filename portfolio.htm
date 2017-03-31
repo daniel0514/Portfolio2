@@ -6,31 +6,25 @@
 	</head>
 	<body>
         <div class="container">
-            <div class="cell" id="cell_0">
-                <div class="subcell randomColor"><p>Portfolio V1 is a website that serves as an online portfolio to host my personal information, my skill set, and my projects. The website is my very first attempt in Web Development,
-                and throughout the development, I was able to gain entry level of knowledge in HTML, CSS, and JavaScript</p></div>
-                <div class="subcell randomColor"><p>The website relies heavily on Twitter's Bootstrap to achieve Responsive Web Design. The Website uses JavaScript and jQuery to handle the scrolling and time change at the footer.
-                    </p></div>
-                <div class="subcell randomColor">
-                    <canvas class="technologyPie" id="PortfolioV1Pie">
-                        Sorry, your browser does not support the canvas tag.
-                    </canvas>
-                    <div id="technologyPieLegend" style="display: inline-block;"></div>
+            <div class="subcell randomColor"><p class="paragraph1"></p></div>
+            <div class="subcell randomColor"><p class="paragraph2"></p></div>
+            <div class="subcell randomColor">
+                <canvas class="technologyPie" id="PortfolioV1Pie">
+                    Sorry, your browser does not support the canvas tag.
+                </canvas>
+                <div id="technologyPieLegend" style="display: inline-block;"></div>
+            </div>
+            <div class="gallery randomColor">
+                <div class="imageGallery">
+                    <img class="imageSlide" id="imagePortfolioV1">
                 </div>
             </div>
-            <div class="cell randomColor" id="cell_1">
-                <div class="gallery">
-                    <div class="imageGallery">
-                        <img class="imageSlide" id="imagePortfolioV1">
-                    </div>
-                </div>
-                <div class="thumbnails">
-                    <button class="galleryButton left" onclick="changeImage(-1)">&#10094;</button>
-                    <img class="thumbnail" onclick="showImg(curIndex = 0)" src="./img/projects/portfolio/portfolio1.png">
-                    <img class="thumbnail" onclick="showImg(curIndex = 1)" src="./img/projects/portfolio/portfolio2.png">
-                    <img class="thumbnail" onclick="showImg(curIndex = 2)" src="./img/projects/portfolio/portfolio3.png">
-                    <button class="galleryButton right" onclick="changeImage(+1)">&#10095;</button>
-                </div>
+            <div class="thumbnails randomColor">
+                <button class="galleryButton left" onclick="changeImage(-1)">&#10094;</button>
+                <img class="thumbnail" onclick="showImg(curIndex = 0)" src="./img/projects/portfolio/portfolio1.png">
+                <img class="thumbnail" onclick="showImg(curIndex = 1)" src="./img/projects/portfolio/portfolio2.png">
+                <img class="thumbnail" onclick="showImg(curIndex = 2)" src="./img/projects/portfolio/portfolio3.png">
+                <button class="galleryButton right" onclick="changeImage(+1)">&#10095;</button>
             </div>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>

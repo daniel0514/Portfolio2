@@ -26,7 +26,14 @@ $(document).ready(function(){
             });
             piechart.draw();
 
-            showImg(0);
+            try{
+                showImg(0);
+            } catch(err){
+                //Do nothing since if there's no image for project, ignore showImg(0)
+            }
+            $(".paragraph1").html(getData(canvas[0].id).descriptions.paragraph1);
+            $(".paragraph2").html(getData(canvas[0].id).descriptions.paragraph2);
+
         }
     })
 
@@ -47,8 +54,8 @@ $(document).ready(function(){
  * @param index :   The Index of the image to show
  */
 function showImg(index){
-    var imgSlide = document.getElementsByClassName('imageSlide')[0];
-    var thumbnails = document.getElementsByClassName('thumbnail');
+    var imgSlide = $('.imageSlide')[0];
+    var thumbnails = $('.thumbnail');
     var images = getData(imgSlide.id).images;
     if(index >= images.length){
         curIndex = index % images.length;
@@ -56,16 +63,16 @@ function showImg(index){
         curIndex = images.length - 1;
     }
     imgSlide.style.opacity = 1;
-    $(imgSlide).fadeOut(500);
-    imgSlide.src = 'img/projects/' + images[curIndex];
-    $(imgSlide).fadeIn(500);
-    for(var i = 0; i < images.length; i++){
-        if(i == curIndex){
-            thumbnails[curIndex].style.opacity = 1.0;
-        }else {
-            thumbnails[i].style.opacity = 0.5;
-        }
-    }
+    $.when($(imgSlide).fadeOut(500)).done(function(){
+        imgSlide.src = 'img/projects/' + images[curIndex];
+        $(imgSlide).fadeIn(500);
+        for(var i = 0; i < images.length; i++){
+            if(i == curIndex){
+                thumbnails[curIndex].style.opacity = 1.0;
+            }else {
+                thumbnails[i].style.opacity = 0.5;
+            }
+        }});
 }
 
 /**
@@ -157,7 +164,7 @@ var PieChart = function(options){
             for(categ in this.options.data){
                 // Add the color and the name of the section to the legend
                 legendHTML += '<div><span style="display:inline-block;width:20px;background-color:'+this.colors[color_index++]+';">&nbsp;</span> ' + categ + '</div>';
-                this.options.legend.innerHTML = legendHTML;
+                this.options.legend.html(legendHTML);
             }
         }
     }

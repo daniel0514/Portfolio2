@@ -1,20 +1,23 @@
 
-.cell {
-    display: inline-block;
-    height: 900px;
-    width: 600px;
-    float: left;
-    display: table;
+.subcell {
+    height:300px;
+    width:600px;
 }
 
-.subcell{
-    height:240px;
-    width:540px;
-    padding: 30px;
-}
 
 .container {
-    max-width: 1200px;
+    max-height: 900px;
+    display: flex;
+    flex-flow: column wrap;
+}
+
+@media only screen and (max-width: 1200px) {
+    .container {
+        display: flex;
+        max-height: 1800px;
+        flex-flow: column wrap;
+    }
+
 }
 
 body{
@@ -30,11 +33,6 @@ body{
     100%{background-color: #66ccff}
 }
 
-html {
-    display: table;
-    margin: auto;
-}
-
 .subcell p{
     display: table;
     vertical-align: middle;
@@ -45,8 +43,9 @@ html {
 
 .technologyPie {
     display: inline-block;
-    height: 220px;
-    width: 440px;
+    height: 250px;
+    width: 500px;
+    padding: 25px 0px 25px 0px;
 }
 
 .imageSlide {
@@ -74,7 +73,7 @@ html {
     width: 30px;
     float: left;
     position: relative;
-    top: 150px;
+    top: 120px;
     margin: 10px;
 }
 

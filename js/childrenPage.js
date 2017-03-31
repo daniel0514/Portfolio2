@@ -31,8 +31,8 @@ $(document).ready(function(){
             } catch(err){
                 //Do nothing since if there's no image for project, ignore showImg(0)
             }
-            $(".paragraph1").html(getData(canvas[0].id).descriptions.paragraph1);
-            $(".paragraph2").html(getData(canvas[0].id).descriptions.paragraph2);
+            $("#paragraph1").html(getData(canvas[0].id).descriptions.paragraph1);
+            $("#paragraph2").html(getData(canvas[0].id).descriptions.paragraph2);
 
         }
     })

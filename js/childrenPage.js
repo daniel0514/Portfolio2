@@ -11,7 +11,7 @@ $(document).ready(function(){
 
         },
         error: function(jqXHR, textStatus, errorThrow){
-            alert('Fail to Load from API. Website will load default project status');
+            alert('API is Offline. The website will now load default project information.');
             console.log(textStatus);
             console.log(errorThrow);
             projects = [
